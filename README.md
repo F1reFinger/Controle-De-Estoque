@@ -10,6 +10,6 @@ Repostitório Com o proposito de armazenar as ideias e o projeto de controle de 
 <h1 allign = "center">Diagrama de Software</h1>
 
 </div>
-  <img allign ="left" alt="png" width="581px" height= "954"src="./Diagrama_de_Software.png"/>
+  <img allign ="left" alt="png" width="954px" height= "581px"src="./Diagrama_de_Software.png"/>
 </div>
 
