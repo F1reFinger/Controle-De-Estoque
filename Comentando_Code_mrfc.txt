@@ -1,0 +1,33 @@
+Falando da parte de software precisamos definir como nos comunicaremos com o modulo (rfid nesse caso)
+para isso necessitamos de implementar o codigo para o Sistema reconhecer o dispositivo mas por sorte 
+temos bibliotecas 
+
+*OBS:Sobre as bibliotecas pode ser necessario a instalação de algumas dessas no seu SO não será explicado 
+como o processo ocorre pois há diversos tutoriais e tornaria extenso colocá-los aqui.
+
+RPi.gpio -> esta biblioteca serve para conseguirmos acessar as portas de I/O (Input/Output) da placa raspberry 
+e conseguirmos obter dados de leitura de modulos externos.
+
+MFRC -> biblioteca que exemplifica funções do modulo como por exemplo leitura de determinado dado ou comportamento
+padrão do modulo são necessarias para o funcionamento do modulo.
+
+signal -> biblioteca de sinais do SO é importante para saber quando o programa de leitura deve parar de tentar receber
+dados e de controle de sistema para saber como se comportar em determinadas situações como um sinal de interrupção na leitura 
+ou até mesmo parar de executar a aplicação devido a algum problema ou solicitação de usuario/administrador.
+
+logo em seguida temos funções de tratamento de dados para capturar os dados recebidos como por exemplo um dado solicitando
+o encerramento da aplicação e de finalização de leitura é tratado pela função "end_read" que encerra o programa
+e limpa o buffer de leitura.
+
+em seguida temos a rotina de leitura dos dados do I/O da raspberry atravéz do modulo de rfid que continuará executando a 
+leitura até que seja solicitado o encerramento dá aplicação.
+
+ao longo de todo o programa temos mensagens impressas no monitor atravéz do comando "print" que escreve saida padrão para 
+ter uma interação melhor com o usuario e conseguir ter uma comunicação mais eficiente para assim aumentar a produtividade
+ sem necessidade de iterações desnecessarias.
+
+em seguida temos a subrotina de leitura que verifica a leitura de algum cartão rfid e valida o cartão se está valido ou se necessita de
+validar
+
+se o cartão for valido é executada a ação atrelada as permissões desses cartões se não pode apresentar erro de autenticação indicado que 
+será necessario cadastrar o cartão no sistema.
