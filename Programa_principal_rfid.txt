@@ -1,0 +1,49 @@
+bem como o codigo anterior é necessario a instalação de python em sua maquina 
+
+como o anterior é importante ter bibliotecas instaladas para conseguir comunicar melhor com os modulos 
+
+Assim como o codigo anterior esse codigo é de estrema importancia o outro codigo era voltado mais para o modulo 
+rfid já esse é voltado especialmente para tratamento de dados feitos atravez da placa raspberry. Ela é importante 
+por receber esses dados brutos e decidir o que fazer se vai ser injetado no banco ou se será necessario retrabalhar 
+os mesmo até mesmo se será necessario coletar outros dados. Algumas bibliotecas a seguir são de extrema importancia 
+e sem elas seria praticamente inviável todo esse serviço.
+
+OS -> biblioteca importantissima que pega todas as funções principais do kernel(nucleo) e usa para comunicação direta
+com o hardware.
+
+sys -> biblioteca com funções adicionais de sistema coisas que podem não ter sido implementadas no kernel ou que tem uma 
+implementação diferenciada se comparado a funbção que vem embutida do kernel.
+
+signal -> função que trata interrupções, problemas e também nos dá algumas funções que nos permitem paralelizar o sistema 
+e a aplicação.
+
+em seguida temos uma pequena simulação de "bancos de dados" simulando acessos autorizados para saber quem está acessando a
+aplicação e quem está fazendo o que para um registro de atividade em caso de eventuais problemas termos algo para consultar
+e tentar encontrar o erro.
+
+
+em seguida temos as funções "try" e "except" elas servem basicamente para testar algo e implementar algo sem que o programa quebre
+e trata esse erro caso ocorra.
+
+MFRC522 -> esta biblioteca é o codigo implementado anteriormente caso não esteja na mesma pasta deste codigo é lançado um erro
+que deve ser tratado pelo except
+
+RPi.GPIO -> biblioteca implementada localmente alterando algumas funções para uso na aplicação também deve ser tratada pela except 
+caso de erro
+
+a função except trata o erro informando que o codigo de comunicação com o modulo rfid não está presente.
+
+a função "check_user" verifica quem tem permissão de aceso aos dados ou quem está autorizado a modificar esses dados assim como alterar 
+qualquer implementação desses dados oou dessas funções.
+
+a função "finalizar_app" encerra o app e termina a comunicação com os modulos de rfid deixando os campos de comunicação livres.
+
+partindo pra subrotina de leitura de dados da aplicação principal é verificada a autorização do usuario ou de autorização de desenvolvedor 
+há nessa parte funções de tratamento de sinais que verificam se o programa necessita finalizar ou se pode continuar a leitura
+
+aqui também é feita a comunicação com o usuário atravéz da função "print" que indica caso haja algo errado ou se tudo deu certo a inserção de dado 
+no "banco de dados".
+
+também é feito uma verificação do cartão de rfid na hora de registrar no banco para não haver escrita sem permissão.
+
+por último repete até que haja sinal de encerramento da aplicação.
